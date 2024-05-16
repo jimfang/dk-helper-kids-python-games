@@ -1,1 +1,3 @@
-# dk-helper-kids-python-games
+# dk-helper-kids-python-games   
+
+examples based on books
