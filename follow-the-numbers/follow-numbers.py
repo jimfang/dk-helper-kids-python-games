@@ -29,18 +29,29 @@ def draw():
 	for line in lines:
 		screen.draw.line(line[0], line[1], (100, 0, 0))
 
-def on_mouse_down(pos):
-	global next_dot
-	global lines
 
-	if dots[next_dot].collidepoint(pos):
-		if next_dot:
-			# draws a line between dots
-			lines.append((dots[next_dot - 1].pos, dots[next_dot].pos))
-		next_dot += 1
-	else:
-		lines = []
-		next_dot = 0
+def on_mouse_down(pos):
+	try:
+		global next_dot
+		global lines
+
+		if dots[next_dot].collidepoint(pos):
+			if next_dot:
+				# draws a line between dots
+				lines.append((dots[next_dot - 1].pos, dots[next_dot].pos))
+			next_dot += 1
+		# else:
+		# 	lines = []
+		# 	next_dot = 0
+	except Exception as e:
+		# Handle other exceptions (generic catch-all)
+		print(f"An error occurred: {e}")
+	# else:
+		# Code to execute if no exception occurred
+		# print("No errors detected.")
+	finally:
+		# Code to execute regardless of whether an exception occurred
+		print("Cleanup or finalization steps here. please click next dot: {}".format(next_dot+1))
 
 
 pgzrun.go()
