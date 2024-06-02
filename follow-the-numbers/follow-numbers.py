@@ -1,18 +1,22 @@
 import pgzrun
-
-from random import randint
+from distanceisolate import generate_new_position
 
 WIDTH = 600
 HEIGHT = 600
 
 dots = []
+dotsPos = []
 lines = []
 
 next_dot = 0
 
 for dot in range(0, 20):
 	actor = Actor("dot")
-	actor.pos = randint(20, WIDTH - 20), randint(20, HEIGHT - 20)
+
+	new_pos = generate_new_position(dotsPos, WIDTH-20, HEIGHT - 20)
+	actor.pos = new_pos
+	dotsPos.append(new_pos)
+
 	dots.append(actor)
 
 def draw():
